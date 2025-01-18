@@ -95,6 +95,7 @@ const PosterCanvas = ({ elements, setElements }) => {
                 color: el.color, 
                 width: "100%",
                 textAlign: "center",
+                overflow:"hidden",
                 resize: "none",
                 whiteSpace: "pre-wrap", 
                 lineHeight: "1.5",

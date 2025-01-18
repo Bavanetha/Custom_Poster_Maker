@@ -1,14 +1,19 @@
 import React, { useState } from "react";
+import {useNavigate } from "react-router-dom";
 import domtoimage from "dom-to-image";
 import "../App.css";
 
 const Topbar = ({ setElements, selectedFontSize,setSelectedFontSize,isBold,setIsBold,isItalic,setIsItalic}) => {
+
+  const navigate = useNavigate();
   
   const clearCanvas = () => {
     setElements([]); 
   };
 
-
+  const returnBack = () => {
+    navigate("/");
+  }
 
 const saveAsImage = () => {
   const canvasArea = document.getElementById("poster-area");
@@ -27,6 +32,8 @@ const saveAsImage = () => {
   return (
     <div className="topbar">
 
+      <button onClick={returnBack} className="back-btn">Back</button>
+      <div className ="container">
       <button onClick={clearCanvas}>Clear</button>
       <button onClick={saveAsImage}>Save as PNG</button>
 
@@ -41,14 +48,16 @@ const saveAsImage = () => {
       >
         <option value={10}>10px</option>
         <option value={15}>15px</option>
-        <option value={16}>16px</option>
         <option value={18}>18px</option>
         <option value={20}>20px</option>
-        <option value={22}>22px</option>
         <option value={24}>24px</option>
-        <option value={26}>26px</option>
+        <option value={28}>28px</option>
         <option value={30}>30px</option>
         <option value={34}>34px</option>
+        <option value={38}>38px</option>
+        <option value={40}>40px</option>
+        <option value={45}>45px</option>
+        <option value={50}>50px</option>
       </select>
       </div>
       
@@ -73,6 +82,9 @@ const saveAsImage = () => {
         I
       </button>
 
+      </div>
+
+      
       
     </div>
   );
