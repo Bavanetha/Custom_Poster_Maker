@@ -69,7 +69,7 @@ const PosterCanvas = ({ elements, setElements }) => {
 
           {/* Text Input */}
           {el.type === "text" && (
-            <input
+            <textarea
               type="text"
               value={el.text}
               onChange={(e) =>
@@ -79,6 +79,10 @@ const PosterCanvas = ({ elements, setElements }) => {
                   )
                 )
               }
+              onInput={(e) => {
+                e.target.style.height = "auto"; 
+                e.target.style.height = `${e.target.scrollHeight}px`; 
+              }}
               autoFocus
               onFocus={() => handleFocus(el.id)}
               onBlur={() => handleBlur(el.id)}
@@ -91,6 +95,9 @@ const PosterCanvas = ({ elements, setElements }) => {
                 color: el.color, 
                 width: "100%",
                 textAlign: "center",
+                resize: "none",
+                whiteSpace: "pre-wrap", 
+                lineHeight: "1.5",
               }}
             />
           )}

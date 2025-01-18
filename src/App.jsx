@@ -4,9 +4,10 @@ import Topbar from "./components/Topbar";
 import MainPosterArea from "./components/MainPosterArea";
 import "./App.css";
 
+
 function App() {
   const [elements, setElements] = useState([]);
-  const [selectedFontSize, setSelectedFontSize] = useState(16);
+  const [selectedFontSize, setSelectedFontSize] = useState(10);
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
 

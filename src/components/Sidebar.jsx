@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 const Sidebar = ({ setElements, selectedFontSize, isBold, isItalic }) => {
   const [selectedColor, setSelectedColor] = useState("#000000");
@@ -62,16 +64,16 @@ const Sidebar = ({ setElements, selectedFontSize, isBold, isItalic }) => {
         style={{ display: "none" }}
         id="imageUpload"
       />
-      <label htmlFor="imageUpload" style={{ cursor: "pointer", padding: "10px", background: "#007bff", color: "white", borderRadius: "5px", display: "inline-block" }}>
+      <label htmlFor="imageUpload" className="upload-btn">
         Upload Image
       </label>
-      
-      <button onClick={() => addElement("rectangle")}>Rectangle</button>
-      <button onClick={() => addElement("circle")}>Circle</button>
-      <button onClick={() => addElement("triangle")}>Triangle</button>
-      <button onClick={() => addElement("star")}>Star</button>
-      <button onClick={() => addElement("hexagon")}>Hexagon</button>
-      <button onClick={() => addElement("text")}>Text</button>
+      <label>SHAPES</label>
+      <button onClick={() => addElement("rectangle")}><i className="fa-solid fa-square"></i></button>
+      <button onClick={() => addElement("circle")}><i className="fa-solid fa-circle"></i></button>
+      <button onClick={() => addElement("triangle")}><i className="fa-solid fa-play fa-rotate-270"></i></button>
+      <button onClick={() => addElement("star")}><i className="fa-solid fa-star"></i></button>
+      <button onClick={() => addElement("hexagon")}>⬢ </button>
+      <button onClick={() => addElement("text")}><i className="fa-solid fa-t"></i></button>
 
     </div>
   );

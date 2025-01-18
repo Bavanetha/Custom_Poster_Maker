@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import html2canvas from "html2canvas";
+import domtoimage from "dom-to-image";
 import "../App.css";
 
 const Topbar = ({ setElements, selectedFontSize,setSelectedFontSize,isBold,setIsBold,isItalic,setIsItalic}) => {
@@ -8,15 +8,21 @@ const Topbar = ({ setElements, selectedFontSize,setSelectedFontSize,isBold,setIs
     setElements([]); 
   };
 
-  const saveAsImage = () => {
-    const canvasArea = document.getElementById("poster-area");
-    html2canvas(canvasArea).then((canvas) => {
-      const link = document.createElement("a");
-      link.download = "poster.png";
-      link.href = canvas.toDataURL();
-      link.click();
-    });
-  };
+
+
+const saveAsImage = () => {
+  const canvasArea = document.getElementById("poster-area");
+
+  domtoimage.toPng(canvasArea).then((dataUrl) => {
+    const link = document.createElement("a");
+    link.download = "poster.png";
+    link.href = dataUrl;
+    link.click();
+  }).catch((error) => {
+    console.error("Error saving image:", error);
+  });
+};
+
 
   return (
     <div className="topbar">
@@ -25,6 +31,7 @@ const Topbar = ({ setElements, selectedFontSize,setSelectedFontSize,isBold,setIs
       <button onClick={saveAsImage}>Save as PNG</button>
 
       {/* Font Size Selector */}
+      <div>
       <label>Font Size:</label>
       <select
         value={selectedFontSize}
@@ -32,12 +39,19 @@ const Topbar = ({ setElements, selectedFontSize,setSelectedFontSize,isBold,setIs
           setSelectedFontSize(e.target.value);
         }}
       >
+        <option value={10}>10px</option>
+        <option value={15}>15px</option>
         <option value={16}>16px</option>
         <option value={18}>18px</option>
         <option value={20}>20px</option>
+        <option value={22}>22px</option>
         <option value={24}>24px</option>
+        <option value={26}>26px</option>
         <option value={30}>30px</option>
+        <option value={34}>34px</option>
       </select>
+      </div>
+      
 
       {/* Bold Button */}
       <button
