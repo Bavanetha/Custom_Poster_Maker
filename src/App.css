@@ -1,0 +1,138 @@
+* {
+  outline: none;
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  background: #333;
+  color: white;
+ 
+  padding: 10px;
+  text-align: center;
+}
+
+.sidebar {
+  background: #f4f4f4;
+  width: 150px;
+  height:90vh;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.content {
+  display: flex;
+}
+
+.poster-container {
+  flex: 1;
+  padding: 20px;
+}
+
+.poster-area {
+  width: 90%;
+  height: 600px;
+  background: white;
+  position: relative;
+  overflow: hidden;
+  border:2px solid black;
+  margin-left: 50px;
+}
+
+.element {
+  position: absolute;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  background-color: transparent;
+}
+
+.element:active {
+  cursor: grabbing;
+}
+
+
+/* Canvas area */
+.canvas {
+  width: 80%;
+  height: 100vh;
+  position: relative;
+  background-color: white;
+}
+
+/* Shape base styles */
+.shape {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Rectangle Shape */
+.rectangle {
+  width: 100%;
+  height: 100%;
+  background-color: transparent; /* Initially transparent */
+  border: none; 
+}
+
+/* Circle Shape */
+.circle {
+  width: 100%;
+  height: 100%;
+  background-color: transparent; /* Initially transparent */
+  border-radius: 50%;
+  border: none; 
+}
+
+/* Triangle Shape */
+.triangle {
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background-color: transparent; /* Initially transparent */
+  border: none; 
+  position: relative;
+  overflow: hidden;
+}
+
+/* Star Shape */
+.star {
+  width: 0;
+  height: 0;
+  background-color: transparent; /* Initially transparent */
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  border: none; 
+}
+
+/* Hexagon Shape */
+.hexagon {
+  width: 80px;
+  height: 80px;
+  background-color: transparent; /* Initially transparent */
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: none; 
+}
+
+input[type="text"] {
+  border: 1px solid transparent;  /* or a light color like #ccc */
+  outline: none;
+}
+
+/* When the text box is focused (clicked inside), apply a border */
+input[type="text"] :focus {
+  border: 2px solid #3498db;  /* Change color to indicate focus */
+}
