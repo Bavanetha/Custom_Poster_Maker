@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PosterCanvas from "./PosterCanvas";
 import "../App.css";
 
-const MainPosterArea = ({ elements, setElements }) => {
+const MainPosterArea = ({ elements, setElements, setSelectedElement }) => {
   const [backgroundColor, setBackgroundColor] = useState("#f0f0f0");
   
   const handleColorChange = (e) => {
@@ -23,7 +23,7 @@ const MainPosterArea = ({ elements, setElements }) => {
       </div>
       
       <div id="poster-area" className="poster-area">
-        <PosterCanvas elements={elements} setElements={setElements} />
+        <PosterCanvas elements={elements} setElements={setElements} setSelectedElement = {setSelectedElement} />
       </div>
     </div>
   );

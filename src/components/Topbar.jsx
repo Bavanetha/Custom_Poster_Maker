@@ -3,7 +3,7 @@ import {useNavigate } from "react-router-dom";
 import domtoimage from "dom-to-image";
 import "../App.css";
 
-const Topbar = ({ setElements, selectedFontSize,setSelectedFontSize,isBold,setIsBold,isItalic,setIsItalic}) => {
+const Topbar = ({ setElements, selectedFontSize,setSelectedFontSize,isBold,setIsBold,isItalic,setIsItalic, deleteSelectedElement }) => {
 
   const navigate = useNavigate();
   
@@ -34,6 +34,7 @@ const saveAsImage = () => {
 
       <button onClick={returnBack} className="back-btn">Back</button>
       <div className ="container">
+      <button onClick={deleteSelectedElement}>Delete</button>
       <button onClick={clearCanvas}>Clear</button>
       <button onClick={saveAsImage}>Save as PNG</button>
 

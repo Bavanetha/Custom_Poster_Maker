@@ -10,6 +10,14 @@ const MainApp = () => {
     const [selectedFontSize, setSelectedFontSize] = useState(10);
     const [isBold, setIsBold] = useState(false);
     const [isItalic, setIsItalic] = useState(false);
+    const [selectedElement, setSelectedElement] = useState(null);
+
+    const deleteSelectedElement = () => {
+      if (selectedElement) {
+        setElements(elements.filter((el) => el.id !== selectedElement.id));
+        setSelectedElement(null); // Reset selected element
+      }
+    };
 
   return (
     <div className="app-container">
@@ -19,13 +27,14 @@ const MainApp = () => {
       isBold={isBold}
       setIsBold={setIsBold}
       isItalic={isItalic}
-      setIsItalic={setIsItalic} />
+      setIsItalic={setIsItalic} 
+      deleteSelectedElement={deleteSelectedElement} />
       <div className="content">
         <Sidebar setElements={setElements} 
          selectedFontSize={selectedFontSize}
          isBold={isBold}
          isItalic={isItalic} />
-        <MainPosterArea elements={elements} setElements={setElements} />
+        <MainPosterArea elements={elements} setElements={setElements} setSelectedElement={setSelectedElement} />
       </div>
     </div>
   )

@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { Rnd } from "react-rnd";
 import "../App.css";
 
-const PosterCanvas = ({ elements, setElements }) => {
+const PosterCanvas = ({ elements, setElements, setSelectedElement }) => {
   const [focusState, setFocusState] = useState({});
+
+  const handleSelectElement = (id) => {
+    setSelectedElement(elements.find((el) => el.id === id)); // Set the selected element
+  };
   
   // Handle dragging of elements
   const handleDrag = (id, x, y) => {
@@ -43,6 +47,7 @@ const PosterCanvas = ({ elements, setElements }) => {
             handleResize(el.id, ref.style.width, ref.style.height)
           }
           className={`shape ${el.type}`}
+          onClick={() => handleSelectElement(el.id)}
           style={{
             backgroundColor: el.type === "text" ? "transparent" : el.color,
             display: "flex",
