@@ -10,7 +10,7 @@ function App() {
     
   return (
     <>
-      <Router>
+      <Router basename="/Custom_Poster_Maker">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/create-poster" element={<MainApp />} />
