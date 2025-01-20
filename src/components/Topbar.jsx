@@ -3,9 +3,10 @@ import {useNavigate } from "react-router-dom";
 import domtoimage from "dom-to-image";
 import "../App.css";
 
-const Topbar = ({ setElements, selectedFontSize,setSelectedFontSize,isBold,setIsBold,isItalic,setIsItalic, deleteSelectedElement }) => {
+const Topbar = ({ setElements, selectedFontSize,setSelectedFontSize,isBold,setIsBold,isItalic,setIsItalic, deleteSelectedElement,setPosterSize }) => {
 
   const navigate = useNavigate();
+  const [showDropdown, setShowDropdown] = useState(false);
   
   const clearCanvas = () => {
     setElements([]); 
@@ -28,6 +29,11 @@ const saveAsImage = () => {
   });
 };
 
+const handleLayoutChange = (size) => {
+  setPosterSize(size);
+  setShowDropdown(false); 
+};
+
 
   return (
     <div className="topbar">
@@ -39,7 +45,7 @@ const saveAsImage = () => {
       <button onClick={saveAsImage}>Save as PNG</button>
 
       {/* Font Size Selector */}
-      <div>
+      <div className = "fontSize">
       <label>Font Size:</label>
       <select
         value={selectedFontSize}
@@ -82,6 +88,18 @@ const saveAsImage = () => {
       >
         I
       </button>
+
+      <div className="layout-dropdown">
+          <button className="dropdown-btn" onClick={() => setShowDropdown(!showDropdown)}>
+            Layout ▼
+          </button>
+          {showDropdown && (
+            <div className="dropdown-content">
+              <button onClick={() => handleLayoutChange({ width: 600, height: 550 })}>Portrait</button>
+              <button onClick={() => handleLayoutChange({ width: 1000, height: 550 })}>Landscape</button>
+            </div>
+          )}
+        </div>
 
       </div>
 

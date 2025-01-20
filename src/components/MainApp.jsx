@@ -11,6 +11,7 @@ const MainApp = () => {
     const [isBold, setIsBold] = useState(false);
     const [isItalic, setIsItalic] = useState(false);
     const [selectedElement, setSelectedElement] = useState(null);
+    const [posterSize, setPosterSize] = useState({ width: 600, height: 550 });
 
     const deleteSelectedElement = () => {
       if (selectedElement) {
@@ -28,13 +29,14 @@ const MainApp = () => {
       setIsBold={setIsBold}
       isItalic={isItalic}
       setIsItalic={setIsItalic} 
-      deleteSelectedElement={deleteSelectedElement} />
+      deleteSelectedElement={deleteSelectedElement}
+      setPosterSize = {setPosterSize} />
       <div className="content">
         <Sidebar setElements={setElements} 
          selectedFontSize={selectedFontSize}
          isBold={isBold}
          isItalic={isItalic} />
-        <MainPosterArea elements={elements} setElements={setElements} setSelectedElement={setSelectedElement} />
+        <MainPosterArea elements={elements} setElements={setElements} setSelectedElement={setSelectedElement} posterSize={posterSize} />
       </div>
     </div>
   )

@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import PosterCanvas from "./PosterCanvas";
 import "../App.css";
 
-const MainPosterArea = ({ elements, setElements, setSelectedElement }) => {
+const MainPosterArea = ({ elements, setElements, setSelectedElement,posterSize }) => {
   const [backgroundColor, setBackgroundColor] = useState("#f0f0f0");
   
   const handleColorChange = (e) => {
-    setBackgroundColor(e.target.value); // Update background color
+    setBackgroundColor(e.target.value); 
     // Change the canvas background color dynamically
     document.querySelector('.poster-area').style.backgroundColor = e.target.value;
   };
@@ -22,7 +22,15 @@ const MainPosterArea = ({ elements, setElements, setSelectedElement }) => {
       />
       </div>
       
-      <div id="poster-area" className="poster-area">
+      <div
+        id="poster-area"
+        className="poster-area"
+        style={{
+          width: posterSize.width,
+          height: posterSize.height,
+          backgroundColor: backgroundColor,
+        }}
+      >
         <PosterCanvas elements={elements} setElements={setElements} setSelectedElement = {setSelectedElement} />
       </div>
     </div>
